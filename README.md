@@ -11,7 +11,7 @@ Download the latest release as a zip file from [here](https://github.com/hayatbi
 After installation and activation you can visit the Customizer. You will see a brand new settings panel named Tracking Codes at probably on top.
 
 ### Summary
-Our aim is that solve this basic requirement with easily so we do not planning to add more feature but feel free to ask, who knows, this could be changed.
+Our aim is that to solve this basic requirement with easily. So we do not planning to add more feature but feel free to ask. Who knows, this could be changed.
 
 ## Development
 Clone this repo and suit your needs. If you find any bug or security vulnerability please open an issue.
