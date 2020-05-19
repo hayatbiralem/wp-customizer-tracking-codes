@@ -8,10 +8,28 @@ if (!class_exists('WP_Customizer_Tracking_Codes')) {
 
         function __construct()
         {
+            add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
             add_action('customize_register', array($this, 'register_customize_sections'));
             add_action('wp_head', array($this, 'the_head'));
             add_action('wp_footer', array($this, 'the_foot'));
             add_action($this->get_the_body_open_hook(), array($this, 'the_body_open'), 1);
+        }
+
+        public function admin_enqueue_scripts(){
+            wp_enqueue_style( 'wp-codemirror' );
+            // wp_enqueue_style( 'code-editor' );
+
+            // wp_enqueue_script( 'wp-codemirror' );
+            $cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/html'));
+
+            wp_enqueue_style( 'wp-customizer-tracking-codes-code-mirror-css', WP_CUSTOMIZER_TRACKING_CODES_URL . 'assets/code-mirror.css', array(), '1.0' );
+            wp_enqueue_script( 'wp-customizer-tracking-codes-code-mirror-js', WP_CUSTOMIZER_TRACKING_CODES_URL . 'assets/code-mirror.js', array('jquery', 'wp-codemirror'), '1.0', true );
+
+            $WP_Customizer_Tracking_Codes_Data = array(
+                'cm_settings'   => $cm_settings
+            );
+
+            wp_localize_script('wp-customizer-tracking-codes-code-mirror-js', 'WP_Customizer_Tracking_Codes_Data', $WP_Customizer_Tracking_Codes_Data);
         }
 
         public function get_the_body_open_hook(){
@@ -152,8 +170,6 @@ if (!class_exists('WP_Customizer_Tracking_Codes')) {
                 'settings' => 'wp-customizer-tracking-codes-body-open-hook',
                 'type' => 'text'
             )));
-
-
 
         }
 

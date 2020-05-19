@@ -9,16 +9,6 @@ if (class_exists('WP_Customize_Control') && !class_exists('WP_Customizer_Trackin
             'code' => []
         );
 
-        public function enqueue() {
-
-            wp_enqueue_style( 'wp-codemirror' );
-            // wp_enqueue_style( 'code-editor' );
-            wp_enqueue_script( 'wp-codemirror' );
-
-            wp_enqueue_style( 'wp-customizer-tracking-codes-code-mirror-css', WP_CUSTOMIZER_TRACKING_CODES_URL . 'assets/code-mirror.css', array(), '1.0' );
-            wp_enqueue_script( 'wp-customizer-tracking-codes-code-mirror-js', WP_CUSTOMIZER_TRACKING_CODES_URL . 'assets/code-mirror.js', array('jquery', 'wp-codemirror'), '1.0', true );
-        }
-
         public function render_content()
         {
 
